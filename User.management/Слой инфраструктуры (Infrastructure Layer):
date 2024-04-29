@@ -1,0 +1,19 @@
+// Репозиторий для кофейных заведений
+@Repository
+public interface CoffeeShopRepository extends JpaRepository<CoffeeShop, Long> {
+    // Методы доступа к данным
+}
+
+// Конфигурация Spring для веб-приложения
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = "com.example.coffeeshop")
+public class AppConfig implements WebMvcConfigurer {
+    // Конфигурация
+}
+
+// Класс для обработки исключений в REST контроллерах
+@ControllerAdvice
+public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+    // Методы обработки исключений
+}
