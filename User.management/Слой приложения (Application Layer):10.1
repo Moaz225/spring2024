@@ -4,6 +4,10 @@ public interface CoffeeShopService {
     CoffeeShop getCoffeeShopById(Long id);
     void addReviewToCoffeeShop(Long coffeeShopId, Review review);
     List<CoffeeShop> compareCoffeeShops(Long coffeeShopId1, Long coffeeShopId2);
+    // Новые методы для дополнительной функциональности
+    void makeMobileOrder(Long coffeeShopId, Order order);
+    void enrollInLoyaltyProgram(Long userId);
+    List<Event> getNearbyEvents();
     // Другие методы
 }
 
@@ -12,12 +16,44 @@ public interface CoffeeShopService {
 public class CoffeeShopServiceImpl implements CoffeeShopService {
     private final CoffeeShopRepository coffeeShopRepository;
     // Конструктор и методы реализации
+    @Override
+    public void makeMobileOrder(Long coffeeShopId, Order order) {
+        // Реализация метода
+    }
+    @Override
+    public void enrollInLoyaltyProgram(Long userId) {
+        // Реализация метода
+    }
+    @Override
+    public List<Event> getNearbyEvents() {
+        // Реализация метода
+    }
+    // Другие методы
 }
 
-// Контроллер для работы с кофейными заведениями
-@RestController
-@RequestMapping("/api/coffeeshops")
-public class CoffeeShopController {
-    private final CoffeeShopService coffeeShopService;
-    // Конструктор и методы контроллера
+// Класс для представления заказа
+public class Order {
+    private Long id;
+    private Long userId;
+    private Long coffeeShopId;
+    private List<Item> items;
+    // Геттеры и сеттеры
+}
+
+// Класс для представления товара в заказе
+public class Item {
+    private Long id;
+    private String name;
+    private double price;
+    private int quantity;
+    // Геттеры и сеттеры
+}
+
+// Класс для представления события
+public class Event {
+    private Long id;
+    private String name;
+    private String description;
+    private LocalDateTime dateTime;
+    // Геттеры и сеттеры
 }
