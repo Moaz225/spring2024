@@ -1,0 +1,17 @@
+// Класс для представления кофейного заведения
+public class CoffeeShop {
+    private Long id;
+    private String name;
+    private String location;
+    private List<Review> reviews;
+    // Геттеры и сеттеры
+}
+
+// Класс для представления отзыва
+public class Review {
+    private Long id;
+    private String userId;
+    private String comment;
+    private int rating;
+    // Геттеры и сеттеры
+}
