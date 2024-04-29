@@ -1,0 +1,23 @@
+// Интерфейс сервиса для работы с кофейными заведениями
+public interface CoffeeShopService {
+    List<CoffeeShop> getAllCoffeeShops();
+    CoffeeShop getCoffeeShopById(Long id);
+    void addReviewToCoffeeShop(Long coffeeShopId, Review review);
+    List<CoffeeShop> compareCoffeeShops(Long coffeeShopId1, Long coffeeShopId2);
+    // Другие методы
+}
+
+// Реализация сервиса
+@Service
+public class CoffeeShopServiceImpl implements CoffeeShopService {
+    private final CoffeeShopRepository coffeeShopRepository;
+    // Конструктор и методы реализации
+}
+
+// Контроллер для работы с кофейными заведениями
+@RestController
+@RequestMapping("/api/coffeeshops")
+public class CoffeeShopController {
+    private final CoffeeShopService coffeeShopService;
+    // Конструктор и методы контроллера
+}
