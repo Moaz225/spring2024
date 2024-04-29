@@ -1,19 +1,23 @@
-// Репозиторий для кофейных заведений
-@Repository
-public interface CoffeeShopRepository extends JpaRepository<CoffeeShop, Long> {
-    // Методы доступа к данным
-}
-
-// Конфигурация Spring для веб-приложения
-@Configuration
-@EnableWebMvc
-@ComponentScan(basePackages = "com.example.coffeeshop")
-public class AppConfig implements WebMvcConfigurer {
-    // Конфигурация
-}
-
-// Класс для обработки исключений в REST контроллерах
-@ControllerAdvice
-public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
-    // Методы обработки исключений
+// Контроллер для работы с кофейными заведениями
+@RestController
+@RequestMapping("/api/coffeeshops")
+public class CoffeeShopController {
+    private final CoffeeShopService coffeeShopService;
+    // Конструктор и методы контроллера
+    @PostMapping("/{coffeeShopId}/order")
+    public ResponseEntity<String> makeMobileOrder(@PathVariable Long coffeeShopId, @RequestBody Order order) {
+        coffeeShopService.makeMobileOrder(coffeeShopId, order);
+        return ResponseEntity.ok("Order placed successfully");
+    }
+    @PostMapping("/loyalty/{userId}")
+    public ResponseEntity<String> enrollInLoyaltyProgram(@PathVariable Long userId) {
+        coffeeShopService.enrollInLoyaltyProgram(userId);
+        return ResponseEntity.ok("Enrolled in loyalty program successfully");
+    }
+    @GetMapping("/events")
+    public ResponseEntity<List<Event>> getNearbyEvents() {
+        List<Event> events = coffeeShopService.getNearbyEvents();
+        return ResponseEntity.ok(events);
+    }
+    // Другие методы
 }
