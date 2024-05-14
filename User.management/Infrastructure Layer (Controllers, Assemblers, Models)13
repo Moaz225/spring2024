@@ -1,0 +1,58 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/register")
+    public User registerUser(@RequestParam String email, @RequestParam String password) {
+        return userService.registerUser(email, password);
+    }
+    // Other user-related endpoints
+}
+
+@RestController
+@RequestMapping("/api/coffee-shops")
+public class CoffeeShopController {
+    @Autowired
+    private CoffeeShopService coffeeShopService;
+
+    @GetMapping
+    public List<CoffeeShop> getAllCoffeeShops() {
+        return coffeeShopService.getAllCoffeeShops();
+    }
+    // Other coffee shop related endpoints
+}
+
+@RestController
+@RequestMapping("/api/coffees")
+public class CoffeeController {
+    @Autowired
+    private CoffeeService coffeeService;
+
+    @GetMapping
+    public List<Coffee> getAllCoffees() {
+        return coffeeService.getAllCoffees();
+    }
+    // Other coffee related endpoints
+}
+
+@RestController
+@RequestMapping("/api/reviews")
+public class ReviewController {
+    @Autowired
+    private ReviewService reviewService;
+
+    @PostMapping
+    public Review addReview(@RequestParam Long userId, @RequestParam Long coffeeId, @RequestParam String comment, @RequestParam int rating) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+        Coffee coffee = coffeeRepository.findById(coffeeId).orElseThrow(() -> new RuntimeException("Coffee not found"));
+        return reviewService.addReview(user, coffee, comment, rating);
+    }
+    // Other review related endpoints
+}
