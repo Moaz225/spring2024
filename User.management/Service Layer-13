@@ -1,0 +1,35 @@
+@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+
+    public User registerUser(User user) {
+        return userRepository.save(user);
+    }
+
+    // Other user-related methods
+}
+
+@Service
+public class CoffeeShopService {
+    @Autowired
+    private CoffeeShopRepository coffeeShopRepository;
+
+    // Methods for coffee shop operations
+}
+
+@Service
+public class CoffeeService {
+    @Autowired
+    private CoffeeRepository coffeeRepository;
+
+    // Methods for coffee operations
+}
+
+@Service
+public class ReviewService {
+    @Autowired
+    private ReviewRepository reviewRepository;
+
+    // Methods for review operations
+}
