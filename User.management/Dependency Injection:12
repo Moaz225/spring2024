@@ -1,0 +1,7 @@
+@Service
+public class CoffeeService {
+    @Autowired
+    private CoffeeRepository coffeeRepository;
+
+    // Methods using coffeeRepository
+}
