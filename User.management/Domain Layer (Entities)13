@@ -1,0 +1,43 @@
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String email;
+    private String password;
+    // Getters and setters
+}
+
+@Entity
+public class CoffeeShop {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String address;
+    // Getters and setters
+}
+
+@Entity
+public class Coffee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private double price;
+    // Getters and setters
+}
+
+@Entity
+public class Review {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
+    private User user;
+    @ManyToOne
+    private Coffee coffee;
+    private String comment;
+    private int rating;
+    // Getters and setters
+}
