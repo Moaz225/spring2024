@@ -1,0 +1,15 @@
+public interface UserRepository extends JpaRepository<User, Long> {
+    // Additional methods if needed
+}
+
+public interface CoffeeShopRepository extends JpaRepository<CoffeeShop, Long> {
+    // Additional methods if needed
+}
+
+public interface CoffeeRepository extends JpaRepository<Coffee, Long> {
+    // Additional methods if needed
+}
+
+public interface ReviewRepository extends JpaRepository<Review, Long> {
+    // Additional methods if needed
+}
