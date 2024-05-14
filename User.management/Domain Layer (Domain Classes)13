@@ -1,0 +1,45 @@
+import javax.persistence.*;
+
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String email;
+    private String password;
+    // Other user attributes, getters, and setters
+}
+
+@Entity
+public class CoffeeShop {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String address;
+    // Other coffee shop attributes, getters, and setters
+}
+
+@Entity
+public class Coffee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private double price;
+    // Other coffee attributes, getters, and setters
+}
+
+@Entity
+public class Review {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
+    private User user;
+    @ManyToOne
+    private Coffee coffee;
+    private String comment;
+    private int rating;
+    // Other review attributes, getters, and setters
+}
