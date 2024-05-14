@@ -1,0 +1,64 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+
+    public User registerUser(String email, String password) {
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(password);
+        return userRepository.save(user);
+    }
+
+    // Other user-related services
+}
+
+@Service
+public class CoffeeShopService {
+    @Autowired
+    private CoffeeShopRepository coffeeShopRepository;
+
+    public List<CoffeeShop> getAllCoffeeShops() {
+        return coffeeShopRepository.findAll();
+    }
+
+    // Other coffee shop related services
+}
+
+@Service
+public class CoffeeService {
+    @Autowired
+    private CoffeeRepository coffeeRepository;
+
+    public List<Coffee> getAllCoffees() {
+        return coffeeRepository.findAll();
+    }
+
+    // Other coffee related services
+}
+
+@Service
+public class ReviewService {
+    @Autowired
+    private ReviewRepository reviewRepository;
+
+    public Review addReview(User user, Coffee coffee, String comment, int rating) {
+        Review review = new Review();
+        review.setUser(user);
+        review.setCoffee(coffee);
+        review.setComment(comment);
+        review.setRating(rating);
+        return reviewRepository.save(review);
+    }
+
+    public List<Review> getReviewsForCoffee(Coffee coffee) {
+        return reviewRepository.findByCoffee(coffee);
+    }
+
+    // Other review related services
+}
