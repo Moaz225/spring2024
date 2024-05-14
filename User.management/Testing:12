@@ -1,0 +1,13 @@
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class CoffeeServiceTest {
+    @Autowired
+    private CoffeeService coffeeService;
+
+    @Test
+    public void testGetAllCoffees() {
+        List<Coffee> coffees = coffeeService.getAllCoffees();
+        assertNotNull(coffees);
+        // Add more assertions
+    }
+}
